@@ -1,39 +1,110 @@
 {% extends "base.html" %}
 
-{% block title %}OpenAutomation: Tienda{% endblock %}
+{% block title %}Equipos{% endblock %}
 
-{% block titlecontenido %}Almacen Tecnico{% endblock %}{% block smalltitlecontenido %}Tecnologias a su alcance{% endblock %}
+{% block titlecontenido %}OpenAutomation{% endblock %}{% block smalltitlecontenido %}Equipos{% endblock %}
 
 {% block contenido %}
-<html>
-	<body">
-      <div id="table">
-		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-		<script type="text/javascript">google.load('visualization', '1', {packages: ['table']});</script>
-		<script type="text/javascript">
-			function drawVisualization() {
-				var data = new google.visualization.DataTable();
 
-					data.addColumn('string', 'Producto');
-					data.addColumn('string', 'Codico OAU');
-					data.addColumn('string', 'Descripcion');
-					data.addColumn('string', 'Precio Neto');
+<html>
+	<head>
+	  <style type='text/css'>
+	  .bold-green-font {
+	    font-weight: bold;
+	    color: green;
+	  }	
+	  .bold-font {
+	    font-weight: bold;
+	  }	
+	  .left-text {
+	    text-align: left;
+	  }
+	  .right-text {
+	    text-align: right;
+	  }	
+	  .large-font {
+	    font-size: 16px;
+	  }
+	  .medium-font {
+	    font-size: 14px;
+	  }
+	  .small-font {
+	    font-size: 12px;
+	  }		
+	  .italic-darkblue-font {
+	    font-style: italic;
+	    color: darkblue;
+	  }	
+	  .italic-purple-font {
+	    font-style: italic;
+	    color: purple;
+	  }	
+	  .underline-blue-font {
+	    text-decoration: underline;
+	    color: blue;
+	  }	
+	  .gold-border {
+	    border: 3px solid gold;
+	  }
+	  .deeppink-border {
+	    border: 3px solid deeppink;
+	  }	
+	  .orange-background {
+	    background-color: orange;
+	  }	
+	  .orchid-background {
+	    background-color: orchid;
+	  }	
+	  .beige-background {
+	    background-color: beige;
+	  }
+      </style>
+		<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+		<script type="text/javascript">
+		    google.load('visualization', '1', {packages: ['table']});
+		    google.setOnLoadCallback(drawVisualization);
+			  
+			var cssClassNames = {
+			  'headerRow': 'left-text bold-font beige-background',
+			  'tableRow': '',
+			  'oddTableRow': '',
+			  'selectedTableRow': 'orchid-background deeppink-border',
+			  'hoverTableRow': '',
+			  'headerCell': 'medium-font',
+			  'tableCell': 'small-font',
+			  'rowNumberCell': ''};
+			
+			var options = {'showRowNumber': true, 'allowHtml': true, 'cssClassNames': cssClassNames};
+			
+			function drawVisualization() {
+				var dataTable = new google.visualization.DataTable();
+
+					dataTable.addColumn('string', 'Producto');
+					dataTable.addColumn('string', 'Codico OAU');
+					dataTable.addColumn('string', 'Descripcion');
+					dataTable.addColumn('string', 'Precio Neto');
 					
-					data.addRows({{ qs|length }});
+					dataTable.addRows({{ qs|length }});
 					
 					{% for s in qs %}  
-						data.setCell({{ forloop.counter0 }}, 0, '{{ s.titleproduct }}');
-						data.setCell({{ forloop.counter0 }}, 1, '{{ s.codeproduct }}');
-						data.setCell({{ forloop.counter0 }}, 2, '{{ s.productdescription }}');
-						data.setCell({{ forloop.counter0 }}, 3, '{{ s.priceproduct }}');
+						dataTable.setCell({{ forloop.counter0 }}, 0, '{{ s.titleproduct }}');
+						dataTable.setCell({{ forloop.counter0 }}, 1, '{{ s.codeproduct }}');
+						dataTable.setCell({{ forloop.counter0 }}, 2, '{{ s.productdescription }}');
+						dataTable.setCell({{ forloop.counter0 }}, 3, '{{ s.priceproduct }}');
 					{% endfor %}
-
-				visualization = new google.visualization.Table(document.getElementById('table'));
-				visualization.draw(data, null);
+					
+				var table_visual = new google.visualization.Table(document.getElementById('table_id'));
+				table_visual.draw(dataTable, options);
 			}
-			google.setOnLoadCallback(drawVisualization);
-		</script>
-	  </div>
-  	</body>
+      </script>
+  	</head>
+
+    <body>
+      <h2>Equipos <small>Base de Datos de Nuestros Equipos</small></h2>
+      <div id='table_id'></div>
+    </body>
+
 </html>
 {% endblock %}
+
+{% block comentcontenido %}verifica los datos {% endblock %}

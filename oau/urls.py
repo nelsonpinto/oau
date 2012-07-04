@@ -5,9 +5,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'company.views.home'),
-    
+    url(r'^$', 'company.views.home'),    
     url(r'^company/$', 'company.views.index'),
+    url(r'^user/new/$', 'company.views.user_new'),
     url(r'^proyects/$', 'proyects.views.index'),
     url(r'^store/$', 'store.views.index'),
         
