@@ -1,3 +1,4 @@
+
       <ul class="thumbnails">
 		  <li class="span6">
 		    <a href="#" class="thumbnail">
@@ -64,3 +65,87 @@
 	  </div>    
      </div> <!--close carrusel-->        
     </div> <!--close row-->
+    
+     <h4>{{ qs.0.titleproduct }}</h4>
+     
+	{% for s in qs %} 	
+	 <h4>{{ s.titleproduct }}</h4>
+	 <h4>{{ s.codeproduct }}</h4>
+	 <h4>{{ s.productdescription }}</h4>
+	 <h4>{{ s.priceproduct }}</h4>
+	{% endfor %}
+
+	  {% if forloop.counter == 3 or forloop.counter == 6 or forloop.counter == 9 %}
+	   <hr><h5>Precio1</h5>
+	  {% endif %}
+
+
+	  {% for s in qs %}
+	    <div class="span4">
+         <div class="thumbnail">
+           <img src="{{ MEDIA_URL }}default/img/ubiquiti/rocket/260x180/ubnt-rocket-m-0.jpg" alt="">
+           <div class="caption">
+            <h4>{{ s.titleproduct }}{{ forloop.counter }}</h4>
+            <h5>Codigo: {{ s.codeproduct }}</h5>
+            <h5>Precio: {{ s.priceproduct }}</h5>
+            <p>{{ s.productdescription }}</p>            
+            <p><a href="#" class="btn btn-primary">Detalles</a> <a href="#" class="btn">PDF</a></p>
+           </div>
+         </div>
+	    </div>
+   
+	  {% endfor %}
+	  
+
+
+
+ 	
+	    <div class="span4">
+         <div class="thumbnail">
+           <img src="{{ MEDIA_URL }}default/img/ubiquiti/rocket/260x180/ubnt-rocket-m-0.jpg" alt="">
+           <div class="caption">
+            <h4>titulo</h4>
+            <h5>Codigo</h5>
+            <h5>Precio</h5>
+            <p>Description</p>            
+            <p><a href="#" class="btn btn-primary">Detalles</a> <a href="#" class="btn">PDF</a></p>
+           </div>
+         </div>
+	    </div>
+
+	    <div class="span4">
+         <div class="thumbnail">
+           <img src="{{ MEDIA_URL }}default/img/ubiquiti/rocket/260x180/ubnt-rocket-m-0.jpg" alt="">
+           <div class="caption">
+            <h4>Titulo</h4>
+            <h5>Codigo</h5>
+            <h5>Precio</h5>
+            <p>Description</p>            
+            <p><a href="#" class="btn btn-primary">Detalles</a> <a href="#" class="btn">PDF</a></p>
+           </div>
+         </div>
+	    </div>
+
+
+
+	 {% if qs|length >= 3 %}
+	   <hr>
+	 {% endif %}
+	 
+	 
+	        <h5>{{ s.titleproduct }}</h5>
+            <h5>{{ s.codeproduct }}</h5>
+            <h5>{{ s.priceproduct }}</h5>
+            <p>{{ s.productdescription }}</p>  
+
+
+
+
+
+
+
+
+
+
+
+

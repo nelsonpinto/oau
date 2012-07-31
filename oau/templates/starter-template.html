@@ -19,6 +19,10 @@
     <style>
       body {
         padding-top: 50px; /* 60px to make the container go all the way to the bottom of the topbar */
+        font-family: 'Andika', sans-serif;
+        background: url('{{ MEDIA_URL }}default/img/fondos/fond3.jpg') repeat-x white;
+        background-position-y: 40px;
+        overflow-y: scroll;
       }
     </style>
 
@@ -86,26 +90,25 @@
           <!-- Agrega boton de Username -->
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> Username
+              <i class="icon-user"></i> {{user}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Login</a></li>
-              <li><a href="#">Logut</a></li>
-              <li><a href="#">Perfil Usuario</a></li>
-              <li class="divider"></li>
-              <li><a href="/user/new">Registrar</a></li>
+              <li><a href="/user/signin">Sign in</a></li>
+              <li><a href="/user/signout">Sign out</a></li>
+              <!--<li class="divider"></li>-->
+              <li><a href="/user/createaccount">Create account</a></li>
             </ul>
           </div>
 
-        </div>
+        </div><!-- container -->
       </div>
     </div>
 
     <div class="container">
 
      <div class="row">
-     <div class="span3 columns">
+      <div class="span3">
        <a class="btn btn-primary" data-toggle="modal" href="#myContact">Contacto</a>	
 	   <div class="modal hide fade" id="myContact" style="display: none; ">
 	    <div class="modal-header">
@@ -125,9 +128,11 @@
 		 <!--<a href="#" class="btn btn-primary">Save changes</a>-->
 	    </div>
 	   </div>
-      </div> <!--close boton contacto -->
+      </div> <!--close span3 columns -->
+     </div> <!--close row--> 
       
-     <div class="span5 columns">
+     <div class="row"> 
+     <div class="span5 offset3">
 	  <div id="myCarousel" class="carousel slide">
 	   <div class="carousel-inner">
 	    <div class="item active">
@@ -151,8 +156,8 @@
 	   </div> 
 	   <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 	   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	  </div>    
-     </div> <!--close carrusel-->        
+	  </div> <!--carousel-->    
+     </div> <!--span5 columns-->        
     </div> <!--close row-->
  
 	 <header class="jumbotron subhead" id="overview">

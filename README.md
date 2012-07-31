@@ -1,2 +1,1 @@
-Version inicial WebSite OpenAutomation
-Version a Produccion
+Implementando la Tienda

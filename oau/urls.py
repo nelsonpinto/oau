@@ -7,7 +7,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'company.views.home'),    
     url(r'^company/$', 'company.views.index'),
-    url(r'^user/new/$', 'company.views.user_new'),
+    url(r'^user/createaccount/$', 'company.views.user_createaccount'),
+    url(r'^user/signin/$', 'company.views.user_signin'),
+    url(r'^user/signout/$', 'company.views.user_signout'),
+    url(r'^user/private/$', 'company.views.user_private'),
     url(r'^proyects/$', 'proyects.views.index'),
     url(r'^store/$', 'store.views.index'),
         
